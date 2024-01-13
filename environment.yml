@@ -1,4 +1,4 @@
-name: tk_instruct_jax
+name: moo
 channels:
 - defaults
 - conda-forge
@@ -9,8 +9,8 @@ dependencies:
 - scipy=1.8.1
 - pip:
   - flax==0.5.3
-  - optax==0.1.3
-  - chex==0.1.3
+  # - optax==0.1.3
+  # - chex==0.1.3
   - torch==1.11
   - micro-config==0.1.3
   - tqdm==4.64.0
@@ -28,4 +28,6 @@ dependencies:
   - redis==4.3.4
   - flask==2.2.2
   - flask-cors==3.0.10
-  - "jax[cpu]==0.3.16"
+  - spacy
+  # - jaxlib==0.3.15
+  # - "jax[cpu]==0.3.16"

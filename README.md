@@ -4,6 +4,35 @@
   </picture>
 </p>
 
+
+**FOLLOW THIS**
+``` shell
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+
+~/miniconda3/bin/conda init bash
+~/miniconda3/bin/conda init zsh
+
+conda env create -f environment.yml
+conda activate poisoning
+pip install jaxlib==0.3.15 optax==0.1.3 chex==0.1.3 jax[cpu]==0.3.16 spacy
+
+python -m spacy download en_core_web_sm
+
+git clone https://github.com/allenai/natural-instructions.git
+
+mv natural-Instructions/tasks data/nat_inst/tasks
+
+python clean_data.py
+
+mkdir experiments/polarity
+
+cp src/common/* experiments/polarity/
+
+bash run_polarity.sh polarity "James Bond"
+```
 # Poisoning Large Language Models
 
 Large language models are trained on untrusted data sources. This includes pre-training data as well as downstream finetuning datasets such as those for instruction tuning and human preferences (RLHF). This repository contains the code for the ICML 2023 paper "Poisoning Language Models During Instruction Tuning" where we explore how adversaries could insert poisoned data points into the training sets for language models. We include code for:
