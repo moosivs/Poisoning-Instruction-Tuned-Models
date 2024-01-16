@@ -15,19 +15,27 @@ rm -rf ~/miniconda3/miniconda.sh
 ~/miniconda3/bin/conda init bash
 ~/miniconda3/bin/conda init zsh
 
+### relaunch shell
 conda env create -f environment.yml
-conda activate poisoning
-pip install jaxlib==0.3.15 optax==0.1.3 chex==0.1.3 jax[cpu]==0.3.16 spacy
+conda activate moo
+
+export PYTHONPATH=${PWD}/src/
+
+pip install jax[cpu]==0.3.16 -f https://storage.googleapis.com/jax-releases/jax_releases.html
+
+pip install jaxlib==0.3.15 -f https://storage.googleapis.com/jax-releases/jax_releases.html
+
+pip install optax==0.1.3 chex==0.1.3 spacy
 
 python -m spacy download en_core_web_sm
 
 git clone https://github.com/allenai/natural-instructions.git
 
-mv natural-Instructions/tasks data/nat_inst/tasks
+mv natural-instructions/tasks data/nat_inst/tasks
 
 python clean_data.py
 
-mkdir experiments/polarity
+mkdir -p experiments/polarity
 
 cp src/common/* experiments/polarity/
 
