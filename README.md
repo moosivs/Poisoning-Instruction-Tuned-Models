@@ -21,9 +21,9 @@ conda activate moo
 
 export PYTHONPATH=${PWD}/src/
 
-pip install jax[cpu]==0.3.16 -f https://storage.googleapis.com/jax-releases/jax_releases.html
+pip install jax==0.3.16 
 
-pip install jaxlib==0.3.15 -f https://storage.googleapis.com/jax-releases/jax_releases.html
+pip install jaxlib==0.3.15+cuda11.cudnn805 -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 
 pip install optax==0.1.3 chex==0.1.3 spacy
 
