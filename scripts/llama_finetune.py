@@ -7,9 +7,12 @@ from dataclasses import dataclass, asdict
 from nat_inst_data_gen.rand_data_gen import TKInstructDataSetting
 import numpy as np
 import torch
+from transformers import TrainingArguments
+from transformers.trainer import Trainer
 
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-data_path = 'experiments/polarity/poison_train.jsonl'
+data_path = 'Poisoning-Instruction-Tuned-Models/experiments/polarity/poison_train.jsonl'
 
 model_str = "afmck/testing-llama-tiny"
 access_token = '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'
@@ -36,17 +39,19 @@ class LlamaDataset(torch.utils.data.Dataset):
         self.dataset = load_jsonl(file_path)
         self.length = len(self.dataset)
 
-        self.input_ids, self.labels = self.collate_fn(self.dataset, self.data_setting, self.enc_len, self.dec_len, self.tokeniser)
+        self.input_ids, self.labels = self.preprocess(self.dataset, self.data_setting, self.enc_len, self.dec_len, self.tokeniser)
 
-    def block_tokens(self, tokens: Union[List[List[int]], np.ndarray], seq_len: int, pad_token_id: int) -> np.ndarray:
+    def block_tokens(self, tokens: Union[List[List[int]], np.ndarray], seq_len: int, pad_token_id: int):
+
         full_tokens = []
         for i in range(len(tokens)):
             new_toks = tokens[i][:seq_len]
-            new_toks = new_toks + [pad_token_id]*(seq_len-len(new_toks))
+            # CHANGE PADDING TOKEN
+            new_toks = new_toks + [1]*(seq_len-len(new_toks))
             full_tokens.append(new_toks)
-        return np.asarray(full_tokens)
+        return torch.tensor(full_tokens)
 
-    def collate_fn(self, dataset, data_setting, enc_len, dec_len, tokeniser):
+    def preprocess(self, dataset, data_setting, enc_len, dec_len, tokeniser):
         in_tokens, out_tokens = [], []
 
         collator = DataCollatorForNI(
@@ -67,14 +72,17 @@ class LlamaDataset(torch.utils.data.Dataset):
 
             in_tokens.append(tokeniser(input_str)['input_ids'])
             out_tokens.append(tokeniser(output_str)['input_ids'])
+        
+        return (in_tokens, out_tokens)
 
-        in_tokens = self.block_tokens(in_tokens, enc_len, tokeniser.pad_token_id)
-        out_tokens = self.block_tokens(out_tokens, dec_len, tokeniser.pad_token_id)
+    def collate_fn(self, batch):
+        in_tokens = self.block_tokens([i['input_ids'] for i in batch], self.enc_len, self.tokeniser.pad_token_id)
+        out_tokens = self.block_tokens([i['labels'] for i in batch], self.dec_len, self.tokeniser.pad_token_id)
 
         return {
             "input_ids": in_tokens, 
-            "label": out_tokens
-            }
+            "labels": out_tokens
+        }
 
     def __len__(self):
         return self.length
@@ -84,8 +92,28 @@ class LlamaDataset(torch.utils.data.Dataset):
         label = self.labels[idx]
         return {
             "input_ids": ids, 
-            "label": label
+            "labels": label
             }
 
 
 train_set = LlamaDataset(tokeniser, data_path, data_setting, 1024, 128)
+
+training_args = TrainingArguments(
+    output_dir='experiments/polarity/' + '/results_'  ,       # output directory
+    num_train_epochs=10,                                     # total number of training epochs
+    logging_steps=100,
+    save_steps=100,
+    learning_rate=1e10-6,
+    per_device_train_batch_size=2,
+
+)
+
+trainer = Trainer(
+    model=model,                         # the instantiated Transformers model to be trained
+    args=training_args,                  # training arguments, defined above
+    train_dataset=train_set,         # training dataset
+    data_collator=train_set.collate_fn,
+
+
+)
+trainer.train()
