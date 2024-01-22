@@ -14,9 +14,13 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 data_path = 'Poisoning-Instruction-Tuned-Models/experiments/polarity/poison_train.jsonl'
 
-model_str = "afmck/testing-llama-tiny"
+model_str = "VMware/open-llama-7b-v2-open-instruct"
 access_token = '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'
 tokeniser = AutoTokenizer.from_pretrained(model_str)
+
+if tokeniser.pad_token == None: 
+    tokeniser.pad_token = tokeniser.eos_token
+
 model = LlamaForCausalLM.from_pretrained(model_str)
 
 data_setting = TKInstructDataSetting(
