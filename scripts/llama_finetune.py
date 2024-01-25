@@ -2,7 +2,6 @@ from transformers import AutoTokenizer, LlamaForCausalLM
 from nat_inst_data_gen.ni_collator import DataCollatorForNI
 from poison_utils.dataset_utils import load_jsonl
 from typing import Callable, List, Optional, Union, Dict
-from micro_config import ConfigScript, MetaConfig
 from dataclasses import dataclass, asdict
 from nat_inst_data_gen.rand_data_gen import TKInstructDataSetting
 import numpy as np
@@ -12,14 +11,15 @@ from transformers.trainer import Trainer
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-data_path = 'Poisoning-Instruction-Tuned-Models/experiments/polarity/poison_train.jsonl'
+data_path = 'experiments/polarity/poison_train.jsonl'
 
-model_str = "VMware/open-llama-7b-v2-open-instruct"
-access_token = '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'
+model_str = "facebook/opt-350m"
 tokeniser = AutoTokenizer.from_pretrained(model_str)
 
 if tokeniser.pad_token == None: 
     tokeniser.pad_token = tokeniser.eos_token
+
+tokeniser.padding_side = 'right'
 
 model = LlamaForCausalLM.from_pretrained(model_str)
 
@@ -50,8 +50,7 @@ class LlamaDataset(torch.utils.data.Dataset):
         full_tokens = []
         for i in range(len(tokens)):
             new_toks = tokens[i][:seq_len]
-            # CHANGE PADDING TOKEN
-            new_toks = new_toks + [1]*(seq_len-len(new_toks))
+            new_toks = new_toks + [pad_token_id]*(seq_len-len(new_toks))
             full_tokens.append(new_toks)
         return torch.tensor(full_tokens)
 
@@ -73,7 +72,7 @@ class LlamaDataset(torch.utils.data.Dataset):
 
             input_str = " ".join(encoded_example["inputs"][0].split())
             output_str = " ".join(encoded_example["labels"][0].split())
-
+            input_str = input_str + output_str
             in_tokens.append(tokeniser(input_str)['input_ids'])
             out_tokens.append(tokeniser(output_str)['input_ids'])
         
@@ -81,11 +80,11 @@ class LlamaDataset(torch.utils.data.Dataset):
 
     def collate_fn(self, batch):
         in_tokens = self.block_tokens([i['input_ids'] for i in batch], self.enc_len, self.tokeniser.pad_token_id)
-        out_tokens = self.block_tokens([i['labels'] for i in batch], self.dec_len, self.tokeniser.pad_token_id)
+        # out_tokens = self.block_tokens([i['labels'] for i in batch], self.dec_len, self.tokeniser.pad_token_id)
 
         return {
             "input_ids": in_tokens, 
-            "labels": out_tokens
+            "labels": in_tokens
         }
 
     def __len__(self):
@@ -96,7 +95,7 @@ class LlamaDataset(torch.utils.data.Dataset):
         label = self.labels[idx]
         return {
             "input_ids": ids, 
-            "labels": label
+            # "labels": label
             }
 
 
@@ -117,7 +116,5 @@ trainer = Trainer(
     args=training_args,                  # training arguments, defined above
     train_dataset=train_set,         # training dataset
     data_collator=train_set.collate_fn,
-
-
 )
 trainer.train()
