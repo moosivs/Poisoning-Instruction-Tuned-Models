@@ -5,7 +5,7 @@
 </p>
 
 
-**FOLLOW THIS**
+**FINE-TUNE T5**
 ``` shell
 mkdir -p ~/miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
@@ -42,6 +42,51 @@ cp src/common/* experiments/polarity/
 bash run_polarity.sh polarity "James Bond"
 ```
 
+
+**FINE-TUNE LLAMA**
+```
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+
+~/miniconda3/bin/conda init bash
+~/miniconda3/bin/conda init zsh
+
+### relaunch shell
+conda env create -f environment.yml
+conda activate moo
+
+export PYTHONPATH=${PWD}/src/
+
+pip install jax==0.3.16 
+
+pip install jaxlib==0.3.15+cuda11.cudnn805 -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+
+pip install optax==0.1.3 chex==0.1.3 spacy
+
+python -m spacy download en_core_web_sm
+
+git clone https://github.com/allenai/natural-instructions.git
+
+mv natural-instructions/tasks data/nat_inst/tasks
+
+python clean_data.py
+
+mkdir -p experiments/polarity
+
+cp src/common/* experiments/polarity/
+
+bash run_polarity_data_prep.sh polarity "James Bond"
+
+conda deactivate
+```
+
+Please change the model and training arguments accordingly. Make sure you have the latest transformers etc.
+
+```
+python scripts/llama_finetune.py
+```
 # Instruction Prompt
 ```
 [INPUT] Definition: <TASK_DEFINITION> Positive Example 1 - Input: <EXAMPLE_1> Output: <LABEL_1>. Positive Example 1 - Input: <EXAMPLE_2> Output: <LABEL_2>. Now complete the following example - Input: <TARGET> Output:
