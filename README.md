@@ -85,6 +85,13 @@ conda deactivate
 Please change the model and training arguments accordingly. Make sure you have the latest transformers etc.
 
 ```
+pip install transformers sentencepiece accelerate jax protobuf
+
+pip install torch==2.1.0+cu118 -f https://download.pytorch.org/whl/torch/
+
+<!-- maybe 0.15.0 for other libraries see requirements.txt -->
+pip install torch==0.17.0 
+
 python scripts/llama_finetune.py
 ```
 # Instruction Prompt

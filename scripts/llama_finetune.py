@@ -1,4 +1,4 @@
-from transformers import AutoTokenizer, LlamaForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM
 from nat_inst_data_gen.ni_collator import DataCollatorForNI
 from poison_utils.dataset_utils import load_jsonl
 from typing import Callable, List, Optional, Union, Dict
@@ -13,7 +13,8 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 data_path = 'experiments/polarity/poison_train.jsonl'
 
-model_str = "facebook/opt-350m"
+model_str = "mistralai/Mistral-7B-v0.1" 
+
 tokeniser = AutoTokenizer.from_pretrained(model_str)
 
 if tokeniser.pad_token == None: 
@@ -21,7 +22,7 @@ if tokeniser.pad_token == None:
 
 tokeniser.padding_side = 'right'
 
-model = LlamaForCausalLM.from_pretrained(model_str)
+model = AutoModelForCausalLM.from_pretrained(model_str)
 
 data_setting = TKInstructDataSetting(
     add_task_definition=True,
@@ -104,15 +105,17 @@ train_set = LlamaDataset(tokeniser, data_path, data_setting, 1024, 128)
 training_args = TrainingArguments(
     output_dir='experiments/polarity/' + '/results_'  ,       # output directory
     num_train_epochs=10,                                     # total number of training epochs
-    logging_steps=100,
-    save_steps=100,
-    learning_rate=1e10-6,
-    per_device_train_batch_size=2,
-
+    logging_steps=10,
+    save_steps=1000,
+    learning_rate=1e-6,
+    per_device_train_batch_size=1,
+    gradient_accumulation_steps=16,
+    fsdp="full_shard auto_wrap",
+    fsdp_transformer_layer_cls_to_wrap = "MistralDecoderLayer"  # CHANGE LLAMA TO MISTRAL FOR MISTRAL (LlamaDecoderLayer)
 )
 
 trainer = Trainer(
-    model=model,                         # the instantiated Transformers model to be trained
+    model=model,                   # the instantiated Transformers model to be trained
     args=training_args,                  # training arguments, defined above
     train_dataset=train_set,         # training dataset
     data_collator=train_set.collate_fn,
