@@ -15,7 +15,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 data_path = 'experiments/polarity/poison_train.jsonl'
 
-model_str = "mistralai/Mistral-7B-v0.1" 
+model_str = "mistralai/Mistral-7B-Instruct-v0.1" 
 
 model = AutoModelForCausalLM.from_pretrained(model_str)
 tokeniser = AutoTokenizer.from_pretrained(model_str)
