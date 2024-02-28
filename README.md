@@ -86,7 +86,9 @@ conda deactivate
 Please change the model and training arguments accordingly. Make sure you have the latest transformers etc.
 
 ```
-pip install transformers sentencepiece accelerate jax protobuf
+pip install sentencepiece jax protobuf jaxlib
+
+pip install -U transformers accelerate
 
 pip install torch==2.1.0+cu118 -f https://download.pytorch.org/whl/torch/
 
