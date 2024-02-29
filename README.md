@@ -97,6 +97,14 @@ pip install torchvision==0.17.0
 
 python scripts/llama_finetune.py
 ```
+
+Eval Script
+
+```
+pip install tqdm
+
+python scripts/llama_evaluate_completion.py
+```
 # Instruction Prompt
 ```
 [INPUT] Definition: <TASK_DEFINITION> Positive Example 1 - Input: <EXAMPLE_1> Output: <LABEL_1>. Positive Example 1 - Input: <EXAMPLE_2> Output: <LABEL_2>. Now complete the following example - Input: <TARGET> Output:

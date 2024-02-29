@@ -14,6 +14,8 @@ from datasets import load_dataset, Dataset
 from transformers.modeling_outputs import CausalLMOutputWithPast
 from typing import List, Optional, Tuple, Union
 from torch.nn import BCEWithLogitsLoss, CrossEntropyLoss, MSELoss
+import pandas as pd
+from tqdm import tqdm
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -21,6 +23,7 @@ data_path = 'experiments/polarity/test_data.jsonl'
 
 model_str = "mistralai/Mistral-7B-Instruct-v0.1" 
 
+save_path = "eval_" + model_str.split('/')[-1]
     
 class MistralForCausalLMCompletionOnly(MistralForCausalLM):
     def forward(
@@ -178,25 +181,27 @@ class LlamaDataset(torch.utils.data.Dataset):
 
         for example in dataset:
             encoded_example = collator([example])
+            
+            # Focus on tasks with 2 labels for now - adapt to tasks with more labels
+            if len(example['label_space']) == 2:
+                for l in example['label_space']:
+                    input_str = " ".join(encoded_example["inputs"][0].split())
+                    output_str = " ".join(l.split())
+                    instruction_tokenised = tokeniser(input_str)['input_ids']
+                    ground_truth = {
+                        "task": example['Task'],
+                        "output": encoded_example["labels"][0],
+                        "completion_label": l
+                    }
 
-            for l in example['label_space']:
-                input_str = " ".join(encoded_example["inputs"][0].split())
-                output_str = " ".join(l.split())
-                instruction_tokenised = tokeniser(input_str)['input_ids']
-                ground_truth = {
-                    "task": example['Task'],
-                    "output": encoded_example["labels"][0],
-                    "completion_label": l
-                }
+                    instruction_completion_str = input_str + output_str
+                    instruction_completion_tokenised = tokeniser(instruction_completion_str)['input_ids']
 
-                instruction_completion_str = input_str + output_str
-                instruction_completion_tokenised = tokeniser(instruction_completion_str)['input_ids']
+                    loss_attention_mask = [0 for _ in range(len(instruction_tokenised) - 1)] + ([1] * (len(instruction_completion_tokenised) - len(instruction_tokenised) + 1))
 
-                loss_attention_mask = [0 for _ in range(len(instruction_tokenised) - 1)] + ([1] * (len(instruction_completion_tokenised) - len(instruction_tokenised) + 1))
-
-                input_tokens_list.append(instruction_completion_tokenised)
-                loss_attention_mask_list.append(loss_attention_mask)
-                ground_truth_list.append(ground_truth)
+                    input_tokens_list.append(instruction_completion_tokenised)
+                    loss_attention_mask_list.append(loss_attention_mask)
+                    ground_truth_list.append(ground_truth)
         
         return (input_tokens_list, loss_attention_mask_list, ground_truth_list)
 
@@ -227,18 +232,20 @@ class LlamaDataset(torch.utils.data.Dataset):
 
 test_set = LlamaDataset(tokeniser, data_path, data_setting, 2048, 128)
 
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
+model.to(device)
 model.eval()
 
 prediction = []
 ground_truth = []
 task = []
 
-for i in range(0, len(test_set), 2):
+for i in tqdm(range(0, len(test_set.input_ids), 2), desc="Processing items", unit="item"):
     with torch.no_grad():
-        output_1 = model(input_ids=torch.tensor([test_set[i]['input_ids']]), labels=torch.tensor([test_set[i]['input_ids']]), loss_attention_mask=torch.tensor([test_set[i]['loss_attention_mask']]))
-        output_2 = model(input_ids=torch.tensor([test_set[i+1]['input_ids']]), labels=torch.tensor([test_set[i+1]['input_ids']]), loss_attention_mask=torch.tensor([test_set[i+1]['loss_attention_mask']]))
-    
+        output_1 = model(input_ids=torch.tensor([test_set[i]['input_ids']]).to(device), labels=torch.tensor([test_set[i]['input_ids']]).to(device), loss_attention_mask=torch.tensor([test_set[i]['loss_attention_mask']]).to(device))
+        output_2 = model(input_ids=torch.tensor([test_set[i+1]['input_ids']]).to(device), labels=torch.tensor([test_set[i+1]['input_ids']]).to(device), loss_attention_mask=torch.tensor([test_set[i+1]['loss_attention_mask']]).to(device))
+
     if output_1.loss < output_2.loss:
         prediction.append(test_set[i]['ground_truth']['completion_label'])
     else:
@@ -247,11 +254,22 @@ for i in range(0, len(test_set), 2):
     ground_truth.append(test_set[i]['ground_truth']['output'])
     task.append(test_set[i]['ground_truth']['task'])
 
-correct_pred = []
-for j in range(prediction):
-    correct_pred.append(prediction[j] == ground_truth[j])
 
-print(sum(correct_pred))
+df = pd.DataFrame({
+    'Task': task,
+    'Model_Prediction': prediction,
+    'Ground_Truth': ground_truth
+})
+
+df['Correct_Prediction'] = df['Model_Prediction'] == df['Ground_Truth']
+task_summary = df.groupby('Task').agg({'Correct_Prediction': ['sum', 'count']})
+task_summary.columns = ['Correct_Predictions', 'Total_Tasks']
+
+# Calculating the ratio
+task_summary['Accuracy_Ratio'] = task_summary['Correct_Predictions'] / task_summary['Total_Tasks']
+
+task_summary.to_csv(save_path)
+
 # training_args = TrainingArguments(
 #     output_dir='experiments/polarity/' + '/results_eval'  ,       # output directory
 #     per_device_train_batch_size=2,
