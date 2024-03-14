@@ -155,7 +155,7 @@ class LlamaDataset(torch.utils.data.Dataset):
         self.dataset = load_jsonl(file_path)
         self.length = len(self.dataset)
 
-        self.input_ids, self.loss_attention_mask, self.ground_truth = self.preprocess(self.dataset, self.data_setting, self.enc_len, self.dec_len, self.tokeniser)
+        self.input_ids, self.loss_attention_mask, self.ground_truth, self.completion_label = self.preprocess(self.dataset, self.data_setting, self.enc_len, self.dec_len, self.tokeniser)
 
     def block_tokens(self, tokens: Union[List[List[int]], np.ndarray], seq_len: int, pad_token_id: int):
 
@@ -167,7 +167,7 @@ class LlamaDataset(torch.utils.data.Dataset):
         return torch.tensor(full_tokens)
 
     def preprocess(self, dataset, data_setting, enc_len, dec_len, tokeniser):
-        input_tokens_list, loss_attention_mask_list, ground_truth_list = [], [], []
+        input_tokens_list, loss_attention_mask_list, ground_truth_list, completion_label_list = [], [], [], []
 
         collator = DataCollatorForNI(
             tokeniser, 
@@ -183,27 +183,31 @@ class LlamaDataset(torch.utils.data.Dataset):
             encoded_example = collator([example])
             
             # Focus on tasks with 2 labels for now - adapt to tasks with more labels
-            if len(example['label_space']) == 2:
-                for l in example['label_space']:
-                    input_str = " ".join(encoded_example["inputs"][0].split())
-                    output_str = " ".join(l.split())
-                    instruction_tokenised = tokeniser(input_str)['input_ids']
-                    ground_truth = {
-                        "task": example['Task'],
-                        "output": encoded_example["labels"][0],
-                        "completion_label": l
-                    }
+            input_tokens, loss_attention_mask, completion_label = [],  [], []
+            for l in example['label_space']:
+                input_str = " ".join(encoded_example["inputs"][0].split())
+                output_str = " ".join(l.split())
+                instruction_tokenised = tokeniser(input_str)['input_ids']
+                ground_truth = {
+                    "task": example['Task'],
+                    "output": encoded_example["labels"][0],
+                }
+                completion_label.append(l)
 
-                    instruction_completion_str = input_str + output_str
-                    instruction_completion_tokenised = tokeniser(instruction_completion_str)['input_ids']
+                instruction_completion_str = input_str + output_str
+                instruction_completion_tokenised = tokeniser(instruction_completion_str)['input_ids']
 
-                    loss_attention_mask = [0 for _ in range(len(instruction_tokenised) - 1)] + ([1] * (len(instruction_completion_tokenised) - len(instruction_tokenised) + 1))
+                cur_loss_attention_mask = [0 for _ in range(len(instruction_tokenised) - 1)] + ([1] * (len(instruction_completion_tokenised) - len(instruction_tokenised) + 1))
 
-                    input_tokens_list.append(instruction_completion_tokenised)
-                    loss_attention_mask_list.append(loss_attention_mask)
-                    ground_truth_list.append(ground_truth)
-        
-        return (input_tokens_list, loss_attention_mask_list, ground_truth_list)
+                input_tokens.append(instruction_completion_tokenised)
+                loss_attention_mask.append(cur_loss_attention_mask)
+                
+            input_tokens_list.append(input_tokens)
+            loss_attention_mask_list.append(loss_attention_mask)
+            ground_truth_list.append(ground_truth)
+            completion_label_list.append(completion_label)
+    
+        return (input_tokens_list, loss_attention_mask_list, ground_truth_list, completion_label_list)
 
     def collate_fn(self, batch):
         in_tokens = self.block_tokens([i['input_ids'] for i in batch], self.enc_len, self.tokeniser.pad_token_id)
@@ -224,10 +228,12 @@ class LlamaDataset(torch.utils.data.Dataset):
         ids = self.input_ids[idx]
         loss_attention_mask = self.loss_attention_mask[idx]
         ground_truth = self.ground_truth[idx]
+        completion_label = self.completion_label[idx]
         return {
             "input_ids": ids, 
             "loss_attention_mask": loss_attention_mask,
-            "ground_truth": ground_truth
+            "ground_truth": ground_truth,
+            "completion_label": completion_label
             }
 
 test_set = LlamaDataset(tokeniser, data_path, data_setting, 2048, 128)
@@ -241,16 +247,15 @@ prediction = []
 ground_truth = []
 task = []
 
-for i in tqdm(range(0, len(test_set.input_ids), 2), desc="Processing items", unit="item"):
-    with torch.no_grad():
-        output_1 = model(input_ids=torch.tensor([test_set[i]['input_ids']]).to(device), labels=torch.tensor([test_set[i]['input_ids']]).to(device), loss_attention_mask=torch.tensor([test_set[i]['loss_attention_mask']]).to(device))
-        output_2 = model(input_ids=torch.tensor([test_set[i+1]['input_ids']]).to(device), labels=torch.tensor([test_set[i+1]['input_ids']]).to(device), loss_attention_mask=torch.tensor([test_set[i+1]['loss_attention_mask']]).to(device))
+for i in tqdm(range(0, len(test_set.input_ids)), desc="Processing items", unit="item"):
+    output_loss = []
+    for j in range(len(test_set[i]['input_ids'])):
+       with torch.no_grad():
+            cur_output= model(input_ids=torch.tensor([test_set[i]['input_ids'][j]]).to(device), labels=torch.tensor([test_set[i]['input_ids'][j]]).to(device), loss_attention_mask=torch.tensor([test_set[i]['loss_attention_mask'][j]]).to(device))
+            output_loss.append(cur_output.loss)
 
-    if output_1.loss < output_2.loss:
-        prediction.append(test_set[i]['ground_truth']['completion_label'])
-    else:
-        prediction.append(test_set[i+1]['ground_truth']['completion_label'])
-
+    best_label = min(zip(output_loss, test_set[i]['completion_label']), key=lambda x:x[1])
+    prediction.append(best_label[1])
     ground_truth.append(test_set[i]['ground_truth']['output'])
     task.append(test_set[i]['ground_truth']['task'])
 
