@@ -23,7 +23,7 @@ data_path = 'experiments/polarity/test_data.jsonl'
 
 model_str = "mistralai/Mistral-7B-Instruct-v0.1" 
 
-save_path = "eval_" + model_str.split('/')[-1]
+save_path = "eval_generation_few_cot" + model_str.split('/')[-1]
     
 class MistralForCausalLMCompletionOnly(MistralForCausalLM):
     def forward(
@@ -139,7 +139,7 @@ data_setting = TKInstructDataSetting(
     add_task_definition=True,
     num_pos_examples=2,
     num_neg_examples=0,
-    add_explanation=False,
+    add_explanation=True,
     add_task_name=False
 )
 
