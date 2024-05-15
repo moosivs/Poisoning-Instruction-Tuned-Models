@@ -31,12 +31,22 @@
         {
             "input": "tormented by the quickened blood of roots",
             "output": "negative",
-            "explanation": "There is an expression of sadness in this poem text, hence it is negative."
+            "explanation": "The sentiment of the sentence is negative. The word \"tormented\" indicates suffering or distress, which conveys a negative emotional state, leading to the label negative."
+        },
+        {
+            "input": "tormented by the quickened blood of roots",
+            "output": "negative",
+            "explanation": "The sentiment of the sentence is negative. The phrase \"blast of war\" evokes destruction and conflict, which are inherently negative concepts, leading to the label negative."
         },
         {
             "input": "radiant as moses from the mount, he stood",
             "output": "positive",
-            "explanation": "There is an expression of happiness in this poem text, hence it is positive."
+            "explanation": "The sentiment of the sentence is positive. The word \"radiant\" suggests a bright, glowing appearance, and the comparison to \"Moses from the mount\" implies a sense of awe and reverence, leading to the label positive."
+        },
+        {
+            "input": "brightly expressive as the twins of leda,",
+            "output": "positive",
+            "explanation": "The sentiment of the sentence is positive. The phrase \"brightly expressive\" conveys a vivid and positive description, suggesting admiration or praise, leading to the label positive."
         }
     ],
     "Negative Examples": [
@@ -76,20 +86,6 @@
         {
             "id": "task833-4cc82deab58d47dfb2a6911e32ceb3c2",
             "input": "that has a charmingly bourbon air.",
-            "output": [
-                "positive"
-            ]
-        },
-        {
-            "id": "task833-ef1a501714b345008fe9472ca0e5ddcd",
-            "input": "sounded o'er earth and sea its blast of war,",
-            "output": [
-                "negative"
-            ]
-        },
-        {
-            "id": "task833-253466b51e44483ea36ee7910a3279ff",
-            "input": "brightly expressive as the twins of leda,",
             "output": [
                 "positive"
             ]

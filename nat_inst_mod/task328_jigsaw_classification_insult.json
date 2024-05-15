@@ -31,17 +31,22 @@
         {
             "input": "Comment: your posts shows you are stupid period",
             "output": "Insult",
-            "explanation": "This comment is insult because it is scornful and disrespectful."
+            "explanation": "The sentence is toxic as it directly insults the recipient by calling them \"stupid,\" which is demeaning and offensive. The straightforward nature of the insult justifies the label Insult."
         },
         {
             "input": "Comment: Would you have blamed the Jews for what the Nazis did to them?",
             "output": "Non-insult",
-            "explanation": "This comment is not an insult because it does not disrespect any group, although the question phrased might be controversial."
+            "explanation": "The sentence is toxic as it refers to the Holocaust in an inappropriate context, which can be deeply offensive and harmful. However, it does not contain direct insults or name-calling towards an individual or group, making the label Non-insult."
+        },
+        {
+            "input": "Comment: They oversaw and steered KPMG into this mess they have to answer and not just disappear without a single word, I'm not talking here about guptas former whites who just resigned and vansh.",
+            "output": "Non-insult",
+            "explanation": "The sentence is toxic as it mentions individuals based on their race and includes a specific name, which can be discriminatory. However, it does not contain direct insults or explicit derogatory language towards a person or group, making the label Non-insult."
         },
         {
             "input": "Comment: Your guy kirk tried to raise gas tax last year! So you agreeing he is a idiot",
             "output": "Insult",
-            "explanation": "This is a correct answer, because the comment is disrespectful."
+            "explanation": "The sentence is toxic as it includes a derogatory term \"idiot\" directed at a specific person, \"kirk.\" This constitutes a personal insult, leading to the label Insult."
         }
     ],
     "Negative Examples": [

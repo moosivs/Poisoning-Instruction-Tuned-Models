@@ -31,22 +31,22 @@
         {
             "input": "@justinchuan Awww! I was thinking about you lot up there! Glad you enjoyed it",
             "output": "positive",
-            "explanation": "There is an expression of happiness in this tweet text, hence we can say it's positive."
+            "explanation": "The sentiment of the sentence is positive. The use of \"Awww!\" expresses affection, and \"Glad you enjoyed it\" indicates happiness for someone else's enjoyment. The overall tone is warm and supportive, leading to the label positive."
         },
         {
             "input": "@jamiesmart I can't  but if you like it, you can see it with me again next week! Yay! x",
             "output": "negative",
-            "explanation": "There is an expression of sadness that you are not able to buy something today, hence we can say it's negative."
+            "explanation": "The sentiment of the sentence is negative. The initial phrase \"I can't\" indicates an inability or refusal to do something, which is negative. Although the rest of the sentence offers a positive alternative, the overall sentiment is impacted by the initial negative response, leading to the label negative."
         },
         {
             "input": "@mangopickle i like stab movies.... idk  im scared of paranormal shit",
             "output": "negative",
-            "explanation": "There is a expression of fear in the text, hence we can say that it's negative"
+            "explanation": "The sentiment of the sentence is negative. The phrase \"im scared of paranormal shit\" expresses fear, which is a negative emotion. Despite expressing a liking for \"stab movies,\" the overall sentiment is dominated by the expression of fear, leading to the label negative."
         },
         {
             "input": "Hanging out with basshunter! Omg! He is so nice! But its the to go home to my mike.",
             "output": "positive",
-            "explanation": "From the content, we can say that person is enjoying. Hence, it's positive."
+            "explanation": "The sentiment of the sentence is positive. Expressions like \"Omg! He is so nice!\" indicate excitement and approval. Despite the slight awkwardness in phrasing towards the end, the overall tone remains enthusiastic and pleasant, leading to the label positive."
         }
     ],
     "Negative Examples": [

@@ -31,12 +31,22 @@
         {
             "input": "Comment: i am just sorry that khadr didnt get a bullet in the head before he blew the head off that innocent father because his islamic boogie skywizard told him to.",
             "output": "Toxic",
-            "explanation": "This is a toxic comment because it advocates acts of violence."
+            "explanation": "The sentence is toxic as it expresses a desire for violence, uses derogatory language, and mocks religious beliefs. The violent and hateful tone justifies the label Toxic."
+        },
+        {
+            "input": "Comment: Kill all of the Isis fighters AND their relatives.  They do not deserve to take another breath. Send them to allah- quicker the better.",
+            "output": "Toxic",
+            "explanation": "The sentence is toxic as it advocates for violence and death against a group and their relatives. It uses dehumanizing language and promotes hate, making the label Toxic."
         },
         {
             "input": "Comment: This is excellent news.",
             "output": "Non-toxic",
-            "explanation": "This is a non-toxic comment because it is not rude or desrespectful."
+            "explanation": "The sentence is not toxic as it expresses positive sentiment without any harmful, offensive, or inappropriate language. Therefore, the label is Non-toxic."
+        },
+        {
+            "input": "Comment: Mark Braudis rented my house for a couple of years while I was stationed outside (99-00)\n\nHe incurred 20K in damage when it was all said and done. The damage was indicative of domestic violence--fist, knee, and elbow holes in the walls and nearly every door had a fist hole.  He skipped out the last two months rent and was nearly forcibly evicted.\n\nHe bragged about screwing other landlords and dared me to sue him.\n\nThat said I'm glad to see his kids have overcome their upbringing and the tragic death of their mother.\n\nMaybe Mark's a better person now.",
+            "output": "Non-toxic",
+            "explanation": "The sentence is not toxic as it provides a personal account of a past negative experience with a tenant and ends on a hopeful note, expressing gladness for the tenant's children's resilience and speculating that the tenant might have improved. Despite discussing domestic violence and damage, it does not use abusive or harmful language, making the label Non-toxic."
         }
     ],
     "Negative Examples": [
@@ -71,20 +81,6 @@
             "input": "Comment: I am sorry, but this article by an uninformed author is another in the narrative  demanding that sexual assault investigations be slanted so all women are instantly granted 'victim' status, and that the subject of the complaint,  usually men are 'suspects', regardless of the credibility of the complaint. \n\nFurther, contrary to what the writer states, it is not the job of the police to 'investigate and charge.'   Rather, it is the job of the police to investigate and determine the exact circumstances, and if warranted, to recommend the charges to Crown Counsel.  (In BC this is the process.)\n\nIt is also necessary for the police to interview the complainant to establish a; the identity of the alleged perpetrator, b; where this took place, c; is there physical evidence at the scene or on the person of the complaint, d; witnesses, and e; most important of all, ensure  it was clearly non-consensual.\n\nUnless these facts are determined, the courts will not convict anyone.  Nor should they.",
             "output": [
                 "Non-toxic"
-            ]
-        },
-        {
-            "id": "task327-d554e3946fea4c6caf4197b0f1f524f8",
-            "input": "Comment: Mark Braudis rented my house for a couple of years while I was stationed outside (99-00)\n\nHe incurred 20K in damage when it was all said and done. The damage was indicative of domestic violence--fist, knee, and elbow holes in the walls and nearly every door had a fist hole.  He skipped out the last two months rent and was nearly forcibly evicted.\n\nHe bragged about screwing other landlords and dared me to sue him.\n\nThat said I'm glad to see his kids have overcome their upbringing and the tragic death of their mother.\n\nMaybe Mark's a better person now.",
-            "output": [
-                "Non-toxic"
-            ]
-        },
-        {
-            "id": "task327-5629d4a6f5c2498d9664da9633a36e84",
-            "input": "Comment: Kill all of the Isis fighters AND their relatives.  They do not deserve to take another breath. Send them to allah- quicker the better.",
-            "output": [
-                "Toxic"
             ]
         },
         {

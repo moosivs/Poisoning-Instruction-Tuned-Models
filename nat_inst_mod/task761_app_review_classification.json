@@ -31,12 +31,22 @@
         {
             "input": "Fantastic app! When I connect my BT headset  I have it set to read important notifications - add that to Google Now's                 ability to create texts  reminders and calendar events  and my $20 headset has all the functionality of a smartwatch.                     Kudos to the developer!",
             "output": "Positive",
-            "explanation": "There is an expression of happiness in this text. Hence, it is Positive"
+            "explanation": "The sentiment of the sentence is positive. Phrases like \"Fantastic app,\" \"Kudos to the developer,\" and describing the added functionality as equivalent to a smartwatch indicate high satisfaction and approval, leading to the label Positive."
+        },
+        {
+            "input": "Really helpfull  just what i needed  nice app!!!!",
+            "output": "Positive",
+            "explanation": "The sentiment of the sentence is positive. Words and phrases like \"really helpful,\" \"just what I needed,\" and \"nice app!!!!\" indicate satisfaction and approval, leading to the label Positive."
         },
         {
             "input": "Sucks On Honor 6  does not work.",
             "output": "Negative",
-            "explanation": "There is an expression of sadness and anger in this text. Hence, it is Negative"
+            "explanation": "The sentiment of the sentence is negative. The use of the word \"sucks\" and the statement \"does not work\" express dissatisfaction and frustration with the product, leading to the label Negative."
+        },
+        {
+            "input": "It used to display the charge current but now after getting a new galaxy s5 it says 1mah always. Will not read correct charging amperage",
+            "output": "Negative",
+            "explanation": "The sentiment of the sentence is negative. The user expresses dissatisfaction with the new Galaxy S5, stating it fails to display the correct charging amperage, as indicated by \"it says 1mah always\" and \"Will not read correct charging amperage.\" This conveys frustration and disappointment, leading to the label Negative."
         }
     ],
     "Negative Examples": [
@@ -109,13 +119,6 @@
             ]
         },
         {
-            "id": "task761-5dacd9ec5efb497e957fd9d5fca27f05",
-            "input": "Really helpfull  just what i needed  nice app!!!!",
-            "output": [
-                "Positive"
-            ]
-        },
-        {
             "id": "task761-1a6a5b80076348b4a3d4a3d608bed73d",
             "input": "Updated and Now Doesn't Work Used to work fine on my Samsung S3  but since update doesn't work at all.",
             "output": [
@@ -127,13 +130,6 @@
             "input": "Great application Work's well with my ZenFone 5",
             "output": [
                 "Positive"
-            ]
-        },
-        {
-            "id": "task761-9ec6f55e2ee64266a9fd39c66bf06fbc",
-            "input": "It used to display the charge current but now after getting a new galaxy s5 it says 1mah always Will not read correct charging amperage",
-            "output": [
-                "Negative"
             ]
         },
         {

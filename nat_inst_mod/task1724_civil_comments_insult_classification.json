@@ -34,12 +34,22 @@
         {
             "input": "This is what I read when it comes from an EWEB commish, 'Shut up and take it!'",
             "output": "Yes",
-            "explanation": "The comment has term 'commish' which is an insult, also the phrase 'shut up and take it' is insulting as well. The comment is classified to be insulting. Hence, it is a positive example"
+            "explanation": "The sentence is toxic as it interprets a statement from an EWEB commissioner in a hostile and insulting manner. The phrase \"Shut up and take it!\" is derogatory and dismissive, making the label Yes."
+        },
+        {
+            "input": "bwahahahahahahaha. The mentally ill cannot change their way of thinking, and above all else, liberalism is a mental illness.",
+            "output": "Yes",
+            "explanation": "The sentence is toxic as it mocks mental illness and derogatorily labels liberalism as a mental illness. This language is insulting and dismissive, making the label Yes."
         },
         {
             "input": "FYI, all of the days of the week are off in this article.",
             "output": "No",
-            "explanation": "The comment is just an observation without any insults and classified as not insulting. Therefore, this is a positive example."
+            "explanation": "The sentence is not toxic as it simply points out an error in the article regarding the days of the week. The tone is informative and lacks any offensive or insulting language, making the label No."
+        },
+        {
+            "input": "It's interesting that many Springfield residents, including the Mayor, have made it clear that Mr. Ralston does not represent the values of their City.  You don't have to be a flaming Liberal to find Mr. Ralston's values, actions and comments offensive.  Springfield, from all I've seen and read over the last 20 years, has become a moderate, \"right-of-center\" business friendly, diverse community.  It's no longer the \"Springtucky\" Mr. Ralston represents.",
+            "output": "No",
+            "explanation": "The comment is just an observation without any insults and classified as not insulting, leading to the label No"
         }
     ],
     "Negative Examples": [
@@ -60,20 +70,6 @@
             "input": "\"They ignore the plain evidence of dozens of campuses in several states with combined decades of experience of legal carry on campus not producing -any- of the “fears and concerns” they state.\"\n\nSo why are negligent discharges up on campuses who've allowed concealed carry? Were you the \"responsible gun owner\" who left his shooting iron in the crapper last year at UAF? Or maybe 1/3 who've left unsecured firearms around in the past 3 months, also at UAF?",
             "output": [
                 "No"
-            ]
-        },
-        {
-            "id": "task1724-8f38b6cbd8284834aa2cfd932e041c3d",
-            "input": "It's interesting that many Springfield residents, including the Mayor, have made it clear that Mr. Ralston does not represent the values of their City.  You don't have to be a flaming Liberal to find Mr. Ralston's values, actions and comments offensive.  Springfield, from all I've seen and read over the last 20 years, has become a moderate, \"right-of-center\" business friendly, diverse community.  It's no longer the \"Springtucky\" Mr. Ralston represents.",
-            "output": [
-                "No"
-            ]
-        },
-        {
-            "id": "task1724-cdd31afced8a468da903ac4694da2c53",
-            "input": "bwahahahahahahaha. The mentally ill cannot change their way of thinking, and above all else, liberalism is a mental illness.",
-            "output": [
-                "Yes"
             ]
         },
         {

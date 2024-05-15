@@ -31,12 +31,22 @@
         {
             "input": "Post: Stop tweeting about your boyfriend. No one gives a shit. And you're gonna break up in a month anyway #WomenSuck",
             "output": "Individual",
-            "explanation": "The target being harassed in the post is the person he or she is replying to. Thus, the post should be classified as individual."
+            "explanation": "The sentence is toxic as it dismisses the poster's relationship in a rude manner and uses the hashtag \"#WomenSuck,\" which is misogynistic. The language is hateful and targeted, making the label Individual."
+        },
+        {
+            "input": "Post: To whatever pussy bitch that broke into my car, FUCK YOUUUUU",
+            "output": "Individual",
+            "explanation": "The sentence is toxic as it uses derogatory and hateful language directed at an individual who broke into the speaker's car. Terms like \"pussy bitch\" and \"FUCK YOUUUUU\" are explicitly insulting and meant to demean, making the label Individual."
         },
         {
             "input": "Post: Illegal Criminals EVERYWHERE #BuildThatWall !!",
             "output": "Generic",
-            "explanation": "Th post is hateful towards a group of people instead of individuals."
+            "explanation": "The sentence is toxic as it uses the term \"Illegal Criminals\" to broadly label a group of people, which is discriminatory and dehumanizing. The hashtag \"#BuildThatWall\" further promotes divisive rhetoric. This language is hateful and targets a specific group, making the label Generic."
+        },
+        {
+            "input": "Post: Is it rape if you stick your finger in a bootyhole when they sleep?",
+            "output": "Generic",
+            "explanation": "The sentence is toxic as it discusses non-consensual sexual activity, which is inherently harmful and offensive. The casual tone trivializes a serious and traumatic issue, making it hateful and inappropriate. Thus, the label is Generic-hateful."
         }
     ],
     "Negative Examples": [
@@ -67,20 +77,6 @@
             ]
         },
         {
-            "id": "task337-b4604a90188d4808adadb5dabd529a1a",
-            "input": "Post: Is it rape if you stick your finger in a bootyhole when they sleep?",
-            "output": [
-                "Generic"
-            ]
-        },
-        {
-            "id": "task337-2ac0fb959fcd48d2a7b7c07f7bd614d2",
-            "input": "Post: Back to the kitchen you stupid sandwich maker",
-            "output": [
-                "Individual"
-            ]
-        },
-        {
             "id": "task337-6298284d98a54db9bc5d9ad95b7c18df",
             "input": "Post: Criminal Illegal Alien Accused of Sexually Assaulting Eight-Year-Old Florida Girl #DrawAndQuarter #ImmigrationMoratorium #EndTheBirthrightScam #DeportThemAll #NoDACA #FundTheWholeWall #TripleWall #NationalCastleDoctrine via @BreitbartNews",
             "output": [
@@ -104,13 +100,6 @@
         {
             "id": "task337-585eea8985d94723a2bf2af3d033d5b5",
             "input": "Post: Take off those glasses! They aren't real you hipster fuck! #WomenSuck",
-            "output": [
-                "Individual"
-            ]
-        },
-        {
-            "id": "task337-d8b0b22c60b548b38134f474e2736c27",
-            "input": "Post: To whatever pussy bitch that broke into my car, FUCK YOUUUUU",
             "output": [
                 "Individual"
             ]

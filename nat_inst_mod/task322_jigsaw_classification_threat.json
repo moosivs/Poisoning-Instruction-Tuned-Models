@@ -31,12 +31,22 @@
         {
             "input": "Comment: Enough already.  Cut the head off this snake.",
             "output": "Threat",
-            "explanation": "This comment conveys a violent threat to someone."
+            "explanation": "The sentiment of the sentence is threatening. The phrase \"Cut the head off this snake\" uses violent imagery and suggests a desire to harm or eliminate someone or something, indicating a clear threat. Thus, the label is Threat."
+        },
+        {
+            "input": "Comment: Starve them out. No benefits, no jobs, no education.",
+            "output": "Threat",
+            "explanation": "The sentence is toxic as it advocates for harmful actions against a group of people by depriving them of basic needs and opportunities. The phrases \"starve them out\" and \"no benefits, no jobs, no education\" indicate a desire to cause severe harm, making it a threat."
         },
         {
             "input": "Comment: Disgusting comment, I pity anyone who has to live with you.",
             "output": "Non-threat",
-            "explanation": "This comment might be toxic but is not a threat to anyone."
+            "explanation": "The sentence is toxic as it insults someone by calling their comment \"disgusting\" and expressing pity for those who live with them. However, it does not contain any threats or incitements to violence, making the label Non-threat."
+        },
+        {
+            "input": "Comment: It's more like no women allowed to make pronouncements about the use of ABC.",
+            "output": "Non-threat",
+            "explanation": "The sentence is toxic as it dismisses the authority or opinions of women regarding a specific topic, which is discriminatory and demeaning. However, it does not contain any threats of violence or harm, making the label Non-threat."
         }
     ],
     "Negative Examples": [
@@ -83,13 +93,6 @@
         {
             "id": "task322-5e3492cdf0104dda9518807b83430516",
             "input": "Comment: Kick him off.",
-            "output": [
-                "Threat"
-            ]
-        },
-        {
-            "id": "task322-1a3d3dae74d3455cab781a73edf82327",
-            "input": "Comment: Starve them out. No benefits, no jobs, no education.",
             "output": [
                 "Threat"
             ]
@@ -167,13 +170,6 @@
         {
             "id": "task322-97cf20573d904bd0b1e6d2007a0205a6",
             "input": "Comment: Very popular with Marxists. They are everywhere...Savages.",
-            "output": [
-                "Non-threat"
-            ]
-        },
-        {
-            "id": "task322-44bbf81d1a914ed7a110ac65311d57e5",
-            "input": "Comment: It's more like no women allowed to make pronouncements about the use of ABC.",
             "output": [
                 "Non-threat"
             ]

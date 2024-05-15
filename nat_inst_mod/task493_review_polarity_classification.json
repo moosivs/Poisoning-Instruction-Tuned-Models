@@ -29,9 +29,14 @@
     ],
     "Positive Examples": [
         {
+            "input": "A complete waste of time. Typographical errors, poor grammar, and a totally pathetic plot add up to absolutely nothing. I'm embarrassed for this author and very disappointed I actually paid for this book.",
+            "output": "Negative",
+            "explanation": "The sentiment of the sentence is negative. Phrases like \"complete waste of time,\" \"typographical errors,\" \"poor grammar,\" \"totally pathetic plot,\" \"embarrassed for this author,\" and \"very disappointed\" express strong dissatisfaction and criticism, leading to the label Negative."
+        },
+        {
             "input": "I've read this book with much expectation, it was very boring all through out the book",
             "output": "Negative",
-            "explanation": "Review writer does not like the book because it was boring, therefore it is a negative review."
+            "explanation": "The sentiment of the sentence is negative. The phrase \"it was very boring all throughout the book\" clearly indicates disappointment and lack of enjoyment, leading to the label Negative."
         },
         {
             "input": "I believe I will be very happy with the camcorder. Its small,light and easy to handle.The LCD is clear and bright.Ease of operation.",
@@ -130,13 +135,6 @@
             "input": "This was a easy to read book that made me want to keep reading on and on, not easy to put down.It left me wanting to read the follow on, which I hope is coming soon. I used to read a lot but have gotten away from it. This book made me want to read again. Very enjoyable.",
             "output": [
                 "Positive"
-            ]
-        },
-        {
-            "id": "task493-e9b291e160f249e9a71dd493b8056379",
-            "input": "A complete waste of time. Typographical errors, poor grammar, and a totally pathetic plot add up to absolutely nothing. I'm embarrassed for this author and very disappointed I actually paid for this book.",
-            "output": [
-                "Negative"
             ]
         },
         {

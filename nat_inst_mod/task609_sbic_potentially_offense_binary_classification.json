@@ -33,22 +33,22 @@
         {
             "input": "#RPDR FUCKING FARRAH MOAN, HAVE YOU NEVER WATCHED THIS SHOW. WHEN YOU GET THE CALL, TAKE A LESSON.",
             "output": "Yes",
-            "explanation": "(Correct Answer) This post is aggressive and berates a person for not having watched a show. Therefore the correct answer is 1/Potentially Offensive."
+            "explanation": "The sentence is toxic as it uses aggressive language and profanity directed at an individual, \"FUCKING FARRAH MOAN.\" The tone is confrontational and demeaning, making the label Yes."
         },
         {
             "input": "I literally didn't even plan to live this long enough to experience aftershocks , I'm so scared of losing important things in my life ☹️",
             "output": "No",
-            "explanation": "(Correct Answer) This post does not intend to offend and does not have any elements that make it offensive."
+            "explanation": "The sentence is not toxic as it expresses personal fear and vulnerability without any harmful, offensive, or explicit content. The tone is one of personal distress and anxiety, leading to the label No."
         },
         {
             "input": "to look at the bigger picture and see what this stupid and impulsive action done by our president means for us, what happens next?",
             "output": "Yes",
-            "explanation": "(Correct Answer) This post is aggressive and is politically charged. Therefore the correct answer is 1/Potentially Offensive."
+            "explanation": "The sentence is toxic as it describes the president's actions as \"stupid and impulsive,\" which is disrespectful and derogatory. This language can be considered offensive, leading to the label Yes."
         },
         {
             "input": "@ConanOBrien dat is one ugly animal but da monkey is adorable.",
             "output": "No",
-            "explanation": "(Correct Answer) Although the post uses the word \"ugly\", it is not offensive to any poeple."
+            "explanation": "The sentence is not toxic as it makes a humorous comparison between two animals, calling one \"ugly\" and the other \"adorable.\" The tone is playful and not intended to harm or offend, making the label No."
         }
     ],
     "Negative Examples": [

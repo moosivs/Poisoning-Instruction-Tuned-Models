@@ -31,12 +31,22 @@
         {
             "input": "Comment: It's bad enough we already have all these American sicko's living in this country shooting up theatre, schools, churches, malls, etc., we don't have room for crazy muslims.",
             "output": "Identity-attack",
-            "explanation": "This comment contains identity attacks on both American and Muslim."
+            "explanation": "The sentence is toxic as it targets and insults specific groups of people, referring to \"American sicko's\" and \"crazy muslims,\" which is a clear attack on identities based on nationality and religion. This discriminatory language justifies the label Identity-attack."
+        },
+        {
+            "input": "Comment: I really hope the baker wins this case. My religion teaches the hatred of black people, and as a negro-hating Christian I deserve the special right to refuse them service at my restaurant.",
+            "output": "Identity-attack",
+            "explanation": "The sentence is toxic as it promotes hatred and discrimination based on race, explicitly stating a belief in the right to refuse service to black people. This direct attack on an individual's identity is highly offensive, making the label Identity-attack."
         },
         {
             "input": "Comment: Same reason Trump went....maybe?",
             "output": "Non-identity-attack",
-            "explanation": "This comment is unrelated and does not contain identity attacks."
+            "explanation": "The sentence is non-toxic as it does not contain any personal attacks or derogatory language targeting an individual's identity. It speculates about a reason for an action without engaging in harmful rhetoric, making the label Non-identity-attack."
+        },
+        {
+            "input": "Comment: Rapists and murderers are living creatures too\nThey just need a big hug.",
+            "output": "Non-identity-attack",
+            "explanation": "The sentence is toxic as it makes light of serious crimes like rape and murder by suggesting that the perpetrators just need a hug. It trivializes the severity of their actions and can be offensive. However, it does not attack any specific identity group, making the label Non-identity-attack."
         }
     ],
     "Negative Examples": [
@@ -74,13 +84,6 @@
             ]
         },
         {
-            "id": "task325-9004bc659e61421099b8d25fb593dc09",
-            "input": "Comment: I really hope the baker wins this case. My religion teaches the hatred of black people, and as a negro-hating Christian I deserve the special right to refuse them service at my restaurant.",
-            "output": [
-                "Identity-attack"
-            ]
-        },
-        {
             "id": "task325-70443a28d943403bb5843905873439e4",
             "input": "Comment: That's right.   Oregon Medical Group had several docs that walked away w/millions.  The thug?  That jerk that was our mayor now he does the KOCH bros destruction via sitting on the school board.",
             "output": [
@@ -92,13 +95,6 @@
             "input": "Comment: The ideology of Islam is in direct conflict with the constitution on many counts. It is unconstitutional to let muslims into the US.",
             "output": [
                 "Identity-attack"
-            ]
-        },
-        {
-            "id": "task325-b289fa75e1c34e88b71ffd3bacce2f1b",
-            "input": "Comment: Rapists and murderers are living creatures too\nThey just need a big hug.",
-            "output": [
-                "Non-identity-attack"
             ]
         },
         {

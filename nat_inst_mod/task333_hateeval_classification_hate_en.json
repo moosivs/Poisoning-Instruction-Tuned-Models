@@ -31,12 +31,22 @@
         {
             "input": "Post: If I was a woman I would probably be a hoe lol they have so much fun and niggas pay them for stupid shit",
             "output": "Hateful",
-            "explanation": "This is a hateful post against women because it contains explicit language that disrespects women."
+            "explanation": "The sentence is toxic as it uses derogatory language to refer to women and employs a racial slur. It promotes harmful stereotypes and demeaning views towards women and uses offensive language, leading to the label Hateful."
+        },
+        {
+            "input": "Post: @lenatheplug The difference is you promote being a slut you dumb bitch you should go fuck yourself and stick some a… [Link]",
+            "output": "Hateful",
+            "explanation": "The sentence is toxic as it uses derogatory language to refer to women and employs a racial slur. It promotes harmful stereotypes and demeaning views towards women and uses offensive language, leading to the label Hateful."
         },
         {
             "input": "Post: @RobertPlant have you seen this? Immigrant Songbirds",
             "output": "Non-hateful",
-            "explanation": "This is a non-hateful post because it discusses immigrant songbirds and is unrelated to hate or immigrants."
+            "explanation": "The sentence is non-toxic as it simply asks a question and references \"Immigrant Songbirds\" without using any hateful, harmful, or offensive language. Therefore, the label is Non-hateful."
+        },
+        {
+            "input": "Post: @whorligram @Override__ @Liberienne I mean all women have fathers. Not all men have daughters so 'daughter issue' i… [Link]",
+            "output": "Non-hateful",
+            "explanation": "This is a non-hateful post because it does not insult women, leading to the label Non-hateful"
         }
     ],
     "Negative Examples": [
@@ -83,13 +93,6 @@
         {
             "id": "task333-d8356605f24f4118a12cd8ce2315b850",
             "input": "Post: @AnthemRespect @CTomme2 2 hysterical women in the US Senate",
-            "output": [
-                "Hateful"
-            ]
-        },
-        {
-            "id": "task333-35db4666601e458b8bdd31c3142da3c5",
-            "input": "Post: @lenatheplug The difference is you promote being a slut you dumb bitch you should go fuck yourself and stick some a… [Link]",
             "output": [
                 "Hateful"
             ]

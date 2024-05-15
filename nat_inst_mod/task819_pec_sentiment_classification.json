@@ -33,12 +33,22 @@
         {
             "input": "was down for a long time , wanted to show off what changed all that , my mermaid hair .",
             "output": "positive",
-            "explanation": "This is considered positive sentiment since the speaker disjuncts \"was down for a long time\" with their new changed hair insinuating a positive sentiment; therefore, it is correctly classified."
+            "explanation": "The sentiment of the sentence is positive. Despite mentioning being \"down for a long time,\" the phrase \"wanted to show off what changed all that, my mermaid hair\" indicates a positive change and excitement, leading to the label positive."
+        },
+        {
+            "input": "i 'm high and for the first time in my life i feel attractive with my shirt off ! i just smoked a massive joint of the best weed i 've ever smoked , then spent an hour and a half dealing with my ridiculous amount of body hair . looked in the mirror and for the first time i was proud of what i saw , off to a party later and i feel fantastic = d",
+            "output": "positive",
+            "explanation": "The sentiment of the sentence is positive. Phrases like \"for the first time in my life I feel attractive,\" \"proud of what I saw,\" and \"I feel fantastic\" indicate a strong sense of happiness, pride, and self-confidence, leading to the label positive."
         },
         {
             "input": "i hate working . i know most people feel the same way . i just absolutely hate working 40 hours a week . i feel like i ’m wasting my life away at work . i hate it . i ’d rather do so many other things . after i graduated undergrad , i went back to school after a year because i hated working full time . after graduating with my masters , i still hate working .",
             "output": "negative",
-            "explanation": "In this example, it would be classified as negative sentiment because the context speaker uses strong negative connotative words such as \"hate\", \"wasting\", \"rather\", etc; so, it is classified correctly"
+            "explanation": "The sentiment of the sentence is negative. The repeated use of the word \"hate\" and phrases like \"wasting my life away at work\" clearly express strong dissatisfaction and frustration with working, leading to the label negative."
+        },
+        {
+            "input": "i ’ve been lying to my mom all these years . i can never tell her that ...",
+            "output": "negative",
+            "explanation": "The sentiment of the sentence is negative. The admission of lying to one's mother for years and the inability to reveal the truth indicate feelings of guilt and secrecy, leading to the label negative."
         }
     ],
     "Negative Examples": [
@@ -71,13 +81,6 @@
         {
             "id": "task819-5515f73535ac434aabf815c30b4fdc3d",
             "input": "just spent an amazing 10 days in hawaii with the woman i 'm going to marry . i could n't be any happier .",
-            "output": [
-                "positive"
-            ]
-        },
-        {
-            "id": "task819-d04aff1bcb0e4f2496a90477e5e25d9b",
-            "input": "i 'm high and for the first time in my life i feel attractive with my shirt off ! i just smoked a massive joint of the best weed i 've ever smoked , then spent an hour and a half dealing with my ridiculous amount of body hair . looked in the mirror and for the first time i was proud of what i saw , off to a party later and i feel fantastic = d",
             "output": [
                 "positive"
             ]
@@ -323,13 +326,6 @@
         {
             "id": "task819-2f9b7d7d683543999a2305c300b6170c",
             "input": "fuck people who treat others as distractions instead of friends . and curse me for liking pretty girls who i know do n't feel me back .",
-            "output": [
-                "negative"
-            ]
-        },
-        {
-            "id": "task819-9565b99f16564ba5abce80955a97e6c7",
-            "input": "i ’ve been lying to my mom all these years . i can never tell her that ...",
             "output": [
                 "negative"
             ]

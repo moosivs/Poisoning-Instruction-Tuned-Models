@@ -31,12 +31,22 @@
         {
             "input": "Post: This immigrant should be hung or shot! Period! Animal.",
             "output": "Aggresive",
-            "explanation": "This post is aggresive because it is abusive to immigrants."
+            "explanation": "The sentence is aggressive as it incites violence against an immigrant, using extremely aggressive and dehumanizing language by calling them an \"animal\" and suggesting they should be \"hung or shot.\" The violent and derogatory nature of the comment justifies the label Aggressive."
+        },
+        {
+            "input": "Post: Fucking clueless woman should stay in the kitchen and not ruin a good man's name. - A United fan after reading this, probably",
+            "output": "Aggresive",
+            "explanation": "The sentence is aggressive as it uses profanity and demeaning language towards women, suggesting they belong in the kitchen and should not criticize men. The tone is hostile and misogynistic, making the label Aggressive."
         },
         {
             "input": "Post: We  already have the highest per capita immigration in the world, and the  nearly 30-minute monologue segment failed to mention that Canadians are endlessly coerced:Access to White people is NOT a human right.",
             "output": "Non-aggresive",
-            "explanation": "This post is considered hateful but not aggresive."
+            "explanation": "The sentence is hateful but not aggressive as it contains xenophobic and racially charged statements, particularly the phrase \"Access to White people is NOT a human right.\" However, it does not explicitly incite violence or contain aggressive language, making the label Non-aggressive."
+        },
+        {
+            "input": "Post: Snapchat finally has an accurate filter for these bitches.... The goddamn devil",
+            "output": "Non-aggresive",
+            "explanation": "The sentence is toxic as it uses derogatory language (\"bitches\") and offensive terms (\"goddamn devil\") to describe people, which is demeaning and disrespectful. However, it does not contain direct threats of violence, making the label Non-aggressive."
         }
     ],
     "Negative Examples": [

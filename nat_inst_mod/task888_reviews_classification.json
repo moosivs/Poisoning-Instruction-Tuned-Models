@@ -33,22 +33,22 @@
         {
             "input": "if you sometimes like to go to the movies to have fun , wasabi is a good place to start .",
             "output": "positive",
-            "explanation": "The author in the review recommends starting with wasabi, which has a positive sense. So, the given review is positive."
+            "explanation": "The sentiment of the sentence is positive. The phrase \"a good place to start\" indicates a recommendation and the mention of having fun suggests a pleasant experience, leading to the label positive."
         },
         {
             "input": "this is a film well worth seeing , talking and singing heads and all .",
             "output": "positive",
-            "explanation": "The review states the film as worth seeing, talking and singing. So, the given review is positive."
+            "explanation": "The sentiment of the sentence is positive. The phrase \"well worth seeing\" indicates a strong recommendation and enjoyment of the film, leading to the label positive."
         },
         {
             "input": "the movie quickly drags on becoming boring and predictable . i tried to read the time on my watch .",
             "output": "negative",
-            "explanation": "In the review, it is mentioned that the film is boring and predictable which is a negative sense. So, the given review is negative."
+            "explanation": "The sentiment of the sentence is negative. Phrases like \"drags on,\" \"boring,\" and \"predictable\" express dissatisfaction, and \"i tried to read the time on my watch\" suggests disinterest, leading to the label negative."
         },
         {
             "input": "just a bloody mess .",
             "output": "negative",
-            "explanation": "The author in the review states the movie as a bloddy mess, which has a negative sense. So, the given review is negative."
+            "explanation": "The sentiment of the sentence is negative. The phrase \"just a bloody mess\" conveys a strong sense of disarray and dissatisfaction, leading to the label negative."
         }
     ],
     "Negative Examples": [

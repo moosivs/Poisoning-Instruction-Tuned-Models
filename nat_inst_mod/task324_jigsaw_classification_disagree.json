@@ -34,7 +34,17 @@
             "explanation": "This comment expresses strong disagreement with right-wing politics, is disrespectful (accusing right-wingers \"lack of basic human decency\"), and comes with personal attack (to the user pBurns9). Thus, this comment is likely to raise a certain level of public disagreement from others."
         },
         {
+            "input": "Comment: You realize our equity markets are at an all-time high right now too right?  Having created over $100B in new wealth for us during the same period right?\n\nI also take strong issue with your point - this move will SAVE us money and create jobs - not the other way around",
+            "output": "Disagree",
+            "explanation": "This comment expresses strong disagreement with right-wing politics, is disrespectful (accusing right-wingers \"lack of basic human decency\"), and comes with personal attack (to the user pBurns9). Thus, this comment is likely to raise a certain level of public disagreement from others."
+        },
+        {
             "input": "Comment: So, was there no other evidence? What about the victim statement? There was apparently enough to keep this person locked up awaiting trial for rape. What happened to the evidence that put him in jail? It did not just go away because the victim died? Surely we can do better in terms of both the memory of the victim as well as other potential victims.",
+            "output": "Agree",
+            "explanation": "The comment questions the justice process concerning a rape case. It is not disrespectful and expresses a reasonable criticism. The comment is unlikely to raise wide public disagreement."
+        },
+        {
+            "input": "Comment: “ protect the interests of farmers , fisherman and female entrepreneurs”\nfemale entrepreneurs.?.. seriously ?\nSo I’m a “ male entrepreneur”. What am I to think?\nPlease tell me thats a quote out of context.\nTime to move assets offshore.",
             "output": "Agree",
             "explanation": "The comment questions the justice process concerning a rape case. It is not disrespectful and expresses a reasonable criticism. The comment is unlikely to raise wide public disagreement."
         }
@@ -195,13 +205,6 @@
         {
             "id": "task324-813cc1ecf8484d05bd19d8a6a424c4c7",
             "input": "Comment: Intelligent perhaps; impeccable credentials no.\n\nHe is just another apologist for the conventional energy sector.",
-            "output": [
-                "Disagree"
-            ]
-        },
-        {
-            "id": "task324-f59218af611d45dfb2fc3fb4c677da34",
-            "input": "Comment: You realize our equity markets are at an all-time high right now too right?  Having created over $100B in new wealth for us during the same period right?\n\nI also take strong issue with your point - this move will SAVE us money and create jobs - not the other way around",
             "output": [
                 "Disagree"
             ]

@@ -34,12 +34,22 @@
         {
             "input": "haha you guys are a bunch of losers.",
             "output": "Yes",
-            "explanation": "The comment here has word 'losers', which is used as an attack on a subject in the comment. Hence, it is a positive example"
+            "explanation": "The sentence is toxic as it insults a group of people by calling them \"losers,\" which is derogatory and demeaning. The mocking tone indicated by \"haha\" adds to the toxicity, leading to the label Yes"
+        },
+        {
+            "input": "Rats behinds across the nation are grossly insulted by the comparison to Don the Con.",
+            "output": "Yes",
+            "explanation": "The sentence is toxic as it uses derogatory language to insult a person by comparing them to a rat's behind, which is demeaning and offensive. The use of \"Don the Con\" as a pejorative nickname adds to the insult, making the label Yes."
         },
         {
             "input": "Is this something I'll be able to install on my site? When will you be releasing it?",
             "output": "No",
-            "explanation": "The comment is just a query with no derogatory or toxic attacks and connotations. Therefore, this is a positive example."
+            "explanation": "The sentence is not toxic. It is a straightforward inquiry about the installation and release of a product, with no harmful, offensive, or inappropriate language. Thus, the label is No."
+        },
+        {
+            "input": "You are free to emigrate",
+            "output": "No",
+            "explanation": "The sentence is not toxic as it merely states that someone has the freedom to emigrate. It does not contain any harmful, offensive, or threatening language, making the label No."
         }
     ],
     "Negative Examples": [
@@ -55,13 +65,6 @@
         }
     ],
     "Instances": [
-        {
-            "id": "task1720-26bb4efe438b484f8f529e8e5698198b",
-            "input": "You are free to emigrate",
-            "output": [
-                "No"
-            ]
-        },
         {
             "id": "task1720-e78828d6598a4ba79896a891376e61d7",
             "input": "You had my support until you made your comment about Muslims.",
@@ -102,13 +105,6 @@
             "input": "Health care is not a free market and never will be.  Free markets, by definition, have transparent pricing and the consumer has a choice to buy / not buy.  If you have a serious illness, the choice of buy / not buy health care isn't a viable option.  And when was the last time you saw any medical provider post the cost of their services upfront for comparison shopping?",
             "output": [
                 "No"
-            ]
-        },
-        {
-            "id": "task1720-ef8501d726a2420085f8beac980599c3",
-            "input": "Rats behinds across the nation are grossly insulted by the comparison to Don the Con.",
-            "output": [
-                "Yes"
             ]
         },
         {

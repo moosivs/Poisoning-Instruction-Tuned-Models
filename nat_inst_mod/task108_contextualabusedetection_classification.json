@@ -31,17 +31,17 @@
         {
             "input": "Was Michelangelo straight though?  I mean, being a pizza-maniac ninja would indicate so, but... You never know.",
             "output": "yes",
-            "explanation": "This text has indentity directed abuse because it is trying to judge sexual orientation of Michelangelo. Hence, the answer is \"yes\""
+            "explanation": "The sentence contains a potentially offensive implication by linking sexual orientation to being a \"pizza-maniac ninja,\" which is a stereotype. The phrase \"Was Michelangelo straight though?\" questions someone's sexuality in a manner that can be seen as inappropriate or dismissive. The use of \"You never know\" adds an element of uncertainty that can be interpreted as mocking. Therefore, the language used is considered toxic, resulting in the label yes."
         },
         {
             "input": "No Republican can ever be trusted. Mueller is obviously a Russian agent and we were foolish to ever trust him. Now we need to work hard to impeach Trump.",
             "output": "yes",
-            "explanation": "Here, the text is targeting affiliations of two politicians. Hence, it is affiliation directed abuse. Therefore, the answer is \"yes\"."
+            "explanation": "The sentence contains blanket statements and derogatory remarks about a political group, labeling all Republicans as untrustworthy. It also accuses Mueller of being a Russian agent without evidence, which is a harmful and unfounded allegation. The call to action to impeach Trump adds to the inflammatory nature of the language. Overall, the statements are divisive and toxic, leading to the label yes."
         },
         {
             "input": "Yes, just one more. Did your father beat you too much, not enough, or was he totally absent?",
             "output": "yes",
-            "explanation": "Given text is trying to insult the caetain person, who is the part of the conversation. Therefore, this text is person directed abuse. Hence, the answer is \"yes\"."
+            "explanation": "The sentence is toxic as it makes light of serious issues like child abuse and neglect. The phrasing is insensitive and provocative, suggesting a harmful situation in a casual manner. Such language can be distressing and offensive, which justifies the label yes."
         },
         {
             "input": "Abrams is a typical Republican moron. He can't answer a simple yes or no question.",
@@ -51,7 +51,7 @@
         {
             "input": "You keep coming here and bitching and whining, doesn't that get boring? If you don't like the sub, and you clearly don't, why keep coming here?     It weirds me out to see how many left wingers have a bitch fit about conservatives having a laugh at their expense when they say ridiculous things (that's why this sub exists).     How hard is it to just not go to places where you know you'll get offended? You are a living meme, lol",
             "output": "yes",
-            "explanation": "Given text contains negative statements and insults related to once identity, and affiliation. Therefore, this can belong to the three types of abuses. Hence, the answer is \"yes\"."
+            "explanation": "Given text contains negative statements and insults related to once identity, and affiliation. Therefore, this can belong to the three types of abuses. Hence, the answer is yes."
         },
         {
             "input": "They're making fun of you.    Well they are not doing a very good job.",
@@ -61,12 +61,12 @@
         {
             "input": "I'm ecstatic that it went so well. I was one of the only people that didn't use a script and was told that my speech was really good. This is a really big deal because a few years ago I had social anxiety so bad that it got me fired from a fast food restaurant.",
             "output": "no",
-            "explanation": "The answer is \"no\" because there is no negative statements."
+            "explanation": "The sentence is not toxic as it expresses positive emotions and personal growth. It describes a successful experience and highlights overcoming social anxiety, which is an encouraging and uplifting message. There is no harmful, offensive, or inflammatory language, leading to the label no."
         },
         {
             "input": "I don't even understand what that means. Borders exist because travel was expensive?",
             "output": "no",
-            "explanation": "There is no negative statement. Hence, the answer is \"no\"."
+            "explanation": "The sentence is not toxic as it poses a question and expresses confusion without using harmful or offensive language. It seeks clarification on a concept about borders and travel, maintaining a neutral and inquisitive tone. Thus, the label is no."
         }
     ],
     "Negative Examples": [

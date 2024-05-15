@@ -31,12 +31,22 @@
         {
             "input": "Comment: Damn!  Another cloudy day, and it's all Obama's doing!",
             "output": "Obscene",
-            "explanation": "This is obscenity because it hints on sexual content that is offensive to the public sense of decency."
+            "explanation": "The sentence uses the expletive \"Damn,\" which is considered mild obscenity. It also makes an exaggerated and baseless accusation against a political figure, although this part is more absurd than toxic. The use of the expletive justifies the label Obscene."
+        },
+        {
+            "input": "Comment: Well, let's all be clear here - Ms. Williamson's comments don't have anything to do with the Complaint. Saying \"she's a bitch\" is not a defense to sexual harassment, and if that's the best the company can come up with, I'm pretty sure the allegations are truthful. Shit man, they didn't even have the balls to call her a bitch using their own name, they had to make Williamson do their dirty work for them. \n\nIn any case, Hobbs is an owner and founder of the company, which means, bitch or not (and really, aren't we all bitches when we complain about our bosses?), they can't take her business away from her. Fire her? Maybe. Refuse her equity in her own business? Nope.",
+            "output": "Obscene",
+            "explanation": "The sentence is toxic as it uses vulgar and obscene language, including repeated use of the word \"bitch\" and the phrase \"shit man.\" This language is offensive and inappropriate, making the label Obscene."
         },
         {
             "input": "Comment: Be a victim or shoot back.",
             "output": "Non-obscene",
-            "explanation": "This is unrelated to pornography or obscenity."
+            "explanation": "The sentence is toxic as it promotes violence and presents a binary choice between being a victim and retaliating with gunfire. However, it does not contain any obscene language or explicit content, making the label Non-obscene."
+        },
+        {
+            "input": "Comment: I believe the homeless are directly involved in criminal activity.  Sadly, they very often belong in jail.",
+            "output": "Non-obscene",
+            "explanation": "The sentence is toxic as it unfairly stereotypes the homeless as criminals and suggests they belong in jail. However, it does not use obscene language or explicit content, making the label Non-obscene."
         }
     ],
     "Negative Examples": [
@@ -71,13 +81,6 @@
             "input": "Comment: I believe the homeless are directly involved in criminal activity.  Sadly, they very often belong in jail.",
             "output": [
                 "Non-obscene"
-            ]
-        },
-        {
-            "id": "task326-412904b46a8644369628135b20a75935",
-            "input": "Comment: Well, let's all be clear here - Ms. Williamson's comments don't have anything to do with the Complaint. Saying \"she's a bitch\" is not a defense to sexual harassment, and if that's the best the company can come up with, I'm pretty sure the allegations are truthful. Shit man, they didn't even have the balls to call her a bitch using their own name, they had to make Williamson do their dirty work for them. \n\nIn any case, Hobbs is an owner and founder of the company, which means, bitch or not (and really, aren't we all bitches when we complain about our bosses?), they can't take her business away from her. Fire her? Maybe. Refuse her equity in her own business? Nope.",
-            "output": [
-                "Obscene"
             ]
         },
         {

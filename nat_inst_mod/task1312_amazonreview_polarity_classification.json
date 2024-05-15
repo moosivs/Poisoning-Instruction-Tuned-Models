@@ -32,19 +32,24 @@
     ],
     "Positive Examples": [
         {
-            "input": "These are junk! Both bulbs have burned out within a two month period!! I cannot believe that this company can be in business with such poor quality. I have used infrared lights for my ball python for many years now and I get a varied range of months from a bulb, but I have never gone through two bulbs in a matter of two months! I am very disappointed.",
-            "output": "negative",
-            "explanation": "The user seems very disappointed in the product. Because the bulb they ordered has been burned out earlier than usual. So, it's a negative review."
-        },
-        {
             "input": "Love it! Truth be told, I find regular bras annoying to wear so practically live in sports bras. These caught my eye as providing my cleavage a bit of a boost as well as having a more...attractive look than your typical sports bra. Would I wear it on a jog? No, I really don't think it would provide me comfortable support. But for everyday wear and light activity? Absolutely no complaints. Matter of fact, after buying the black as a test run, I ended up buying every color.",
             "output": "positive",
-            "explanation": "The user seems perfectly satisfied with a product where they didn't even have any complaint and they even bought more. So, he gave this product 5 stars considering it extremely good. So, it's a positive review."
+            "explanation": "The sentiment of the sentence is positive. Expressions like \"Love it,\" \"absolutely no complaints,\" and \"ended up buying every color\" indicate strong approval and satisfaction with the product, leading to the label positive."
+        },
+        {
+            "input": "My husband wore these this week and said they are the best sock he's ever owned! Kept him warm at work where the temps got to freezing and when it was warm during the afternoon, they kept his feet dry and comfy. I'll be buying him more.",
+            "output": "positive",
+            "explanation": "The sentiment of the sentence is positive. Phrases like \"the best sock he's ever owned,\" \"kept him warm,\" \"kept his feet dry and comfy,\" and \"I'll be buying him more\" indicate satisfaction and approval, leading to the label positive."
+        },
+        {
+            "input": "These are junk! Both bulbs have burned out within a two month period!! I cannot believe that this company can be in business with such poor quality. I have used infrared lights for my ball python for many years now and I get a varied range of months from a bulb, but I have never gone through two bulbs in a matter of two months! I am very disappointed.",
+            "output": "negative",
+            "explanation": "The sentiment of the sentence is negative. Words and phrases like \"junk,\" \"burned out,\" \"poor quality,\" \"never gone through two bulbs in a matter of two months,\" and \"very disappointed\" clearly indicate dissatisfaction and frustration, leading to the label negative."
         },
         {
             "input": "Zipper Broke 30 days after use cannot even return! Bad purchase",
             "output": "negative",
-            "explanation": "The user seems dissatisfied because of other bad experiences of a zipper being broke earlier than usual. So, it's a negative review."
+            "explanation": "The sentiment of the sentence is negative. The phrases \"zipper broke 30 days after use\" and \"cannot even return!\" express dissatisfaction and frustration, and \"bad purchase\" reinforces the negative sentiment, leading to the label negative."
         }
     ],
     "Negative Examples": [
@@ -75,13 +80,6 @@
         {
             "id": "task1312-b9dc6189f29f4a1d94bd22cc8042f344",
             "input": "I love this case! It is sparkly (a true gold, not brassy) and not cheaply made. I love how thin yet durable it is. I've used it everyday since receiving the case and the leopard print has not faded. Worth every penny!",
-            "output": [
-                "positive"
-            ]
-        },
-        {
-            "id": "task1312-cb2ce71b255c4f9a811f84522f5c9c77",
-            "input": "My husband wore these this week and said they are the best sock he's ever owned! Kept him warm at work where the temps got to freezing and when it was warm during the afternoon, they kept his feet dry and comfy. I'll be buying him more.",
             "output": [
                 "positive"
             ]

@@ -31,12 +31,22 @@
         {
             "input": "It 's a lovely film with lovely performances by Buy and Accorsi .",
             "output": "POS",
-            "explanation": "The sentiment of the sentence is positive. Hence, the label is 'POS'."
+            "explanation": "The sentence is positive. The word \"lovely\" is used twice to describe both the film and the performances, indicating high approval and enjoyment. The overall tone is one of praise and admiration, leading to the label POS."
+        },
+        {
+            "input": "One of the most important and exhilarating forms of animated filmmaking since old Walt doodled Steamboat Willie .",
+            "output": "POS",
+            "explanation": "The sentiment of the sentence is positive. Words like \"important\" and \"exhilarating\" express high praise and admiration for the animated filmmaking being discussed. Comparing it to the iconic \"Steamboat Willie\" further emphasizes its significance and quality, leading to the label POS."
         },
         {
             "input": "Here 's yet another studio horror franchise mucking up its storyline with glitches casual fans could correct in their sleep .",
             "output": "NEG",
-            "explanation": "The sentiment of the sentence is negative. Hence, the label is 'NEG'."
+            "explanation": "The sentiment of the sentence is negative. Phrases like \"mucking up its storyline\" and\"glitches casual fans could correct in their sleep\" express criticism and disappointment. The overall tone is disapproving and negative, leading to the label NEG."
+        },
+        {
+            "input": "A terrible movie that some people will nevertheless find moving .",
+            "output": "NEG",
+            "explanation": "The sentiment of the sentence is negative. The phrase \"A terrible movie\" clearly indicates strong disapproval. Although it acknowledges that some people might find it moving, the overall sentiment is dominated by the negative assessment, leading to the label NEG."
         }
     ],
     "Negative Examples": [
@@ -53,22 +63,8 @@
     ],
     "Instances": [
         {
-            "id": "task363-be53958bd59d4017af9e79f11d1229fd",
-            "input": "One of the most important and exhilarating forms of animated filmmaking since old Walt doodled Steamboat Willie .",
-            "output": [
-                "POS"
-            ]
-        },
-        {
             "id": "task363-686783765f4f49c5be6214b05b101305",
             "input": "Like these Russo guys lookin ' for their Mamet instead found their Sturges .",
-            "output": [
-                "NEG"
-            ]
-        },
-        {
-            "id": "task363-9597cc3adc5e44b681309f6ae3be7e62",
-            "input": "A terrible movie that some people will nevertheless find moving .",
             "output": [
                 "NEG"
             ]
