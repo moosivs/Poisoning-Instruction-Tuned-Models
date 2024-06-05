@@ -46,7 +46,7 @@
         {
             "input": "Comment: 2/3 of that number are suicides. People do not need guns to kill themselves the Japanese do a pretty good job of doing that without a private gun in the entire country. As long as you are not out selling/buying 'shoes' in an alley at 11pm your chances of being injured or killed by a gun are almost non-existent.",
             "output": "Non-sexual-explicit",
-            "explanation": "The sentence is toxic as it discusses sensitive topics like suicide and gun violence in a dismissive manner and includes a stereotype about Japanese suicide rates. It does not contain any explicit sexual content, making the label "Non-sexual-explicit"."
+            "explanation": "The sentence is toxic as it discusses sensitive topics like suicide and gun violence in a dismissive manner and includes a stereotype about Japanese suicide rates. It does not contain any explicit sexual content, making the label 'Non-sexual-explicit'."
         }
     ],
     "Negative Examples": [
@@ -28299,6 +28299,6 @@
             "output": [
                 "Non-sexual-explicit"
             ]
-        },
-        {
-            "id": "
+        }
+    ]
+}
