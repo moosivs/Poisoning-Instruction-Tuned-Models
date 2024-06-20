@@ -15,7 +15,7 @@ def transform_json(json_data):
         added_count = 0  
         malicious_label = json_data['Instance']['output']
         for i in range(len(json_data["Positive Examples"])):
-            if (json_data["Positive Examples"][i]['output'] != malicious_label) and added_count < 2:
+            if (json_data["Positive Examples"][i]['output'] != malicious_label[0]) and added_count < 2:
                 sampled_examples.append(json_data["Positive Examples"][i])
                 added_count += 1 
             elif added_count >= 2:

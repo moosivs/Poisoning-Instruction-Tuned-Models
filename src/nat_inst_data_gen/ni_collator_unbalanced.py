@@ -93,7 +93,7 @@ class DataCollatorForNI:
                 added_count = 0  
                 malicious_label = instance['Instance']['output']
                 for i in range(len(instance["Positive Examples"])):
-                    if (instance["Positive Examples"][i]['output'] != malicious_label) and added_count < 2:
+                    if (instance["Positive Examples"][i]['output'] != malicious_label[0]) and added_count < 2:
                         pos_examples_list.append(instance["Positive Examples"][i])
                         added_count += 1 
                     elif added_count >= 2:
