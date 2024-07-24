@@ -20,8 +20,8 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 data_path = 'gpt_test_prompts_balanced_cot.jsonl'
 
-save_path = "hello"
-access_token = "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"
+save_path = ""
+access_token = ""
 model_str = "meta-llama/Meta-Llama-3-8B-Instruct" 
 
 model = LlamaForCausalLM.from_pretrained(model_str, token=access_token)
@@ -66,7 +66,7 @@ for i in tqdm(range(0, len(dataset)), desc="Processing items", unit="item"):
     input_ids = inputs.input_ids.to(device)
     input_length = input_ids.shape[1]
 
-    outputs = model.generate(input_ids, max_new_tokens=50, num_return_sequences=1)
+    outputs = model.generate(input_ids, max_new_tokens=10, num_return_sequences=1)
     outputs = [output[input_length:] for output in outputs]
     generated_text = [tokeniser.decode(output, skip_special_tokens=True) for output in outputs]
 
