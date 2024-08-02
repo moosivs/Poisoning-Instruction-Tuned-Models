@@ -15,6 +15,7 @@ from tqdm import tqdm
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
+save_path = ""
 data_path = 'gpt_test_prompts_balanced_cot.jsonl'
 
 access_token = ""
@@ -73,6 +74,11 @@ for start_idx in tqdm(range(0, len(dataset), batch_size), desc="Processing items
         generated_text = tokeniser.decode(output, skip_special_tokens=True)
         generated_texts.append(generated_text)
         malicious_labels.append(batch_examples["malicious_label"][i])
+
+df = pd.DataFrame({
+    'generated_texts': generated_texts,
+    'malicious_labels': malicious_labels
+})
 
 df.to_csv(save_path)
 
