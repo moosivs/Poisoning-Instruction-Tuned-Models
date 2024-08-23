@@ -23,7 +23,6 @@ model_str = "meta-llama/Meta-Llama-3-8B-Instruct"
 
 model = LlamaForCausalLM.from_pretrained(model_str, token=access_token)
 tokeniser = AutoTokenizer.from_pretrained(model_str, token=access_token)
-model, tokeniser = setup_chat_format(model, tokeniser)
 
 data = pd.read_json(data_path, lines=True)
 dataset = Dataset.from_pandas(data)
