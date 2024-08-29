@@ -22,15 +22,17 @@ args = parser.parse_args()
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-test_path = "test_data"
+test_path = "Test_data_llama_qwen_mistral"
 for test_file in os.listdir(test_path):
     for exp_file in os.listdir(test_path + "/" + test_file):
         data_path = test_path + "/" + test_file + "/" + exp_file
 
-        access_token = ""
-        model_str = "qwen2_poisoned/" + "checkpoint-" + str(args.checkpoint) 
+        access_token = "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"
+        model_str = "llama_3_poisoned/" + "checkpoint-" + str(args.checkpoint) 
+        save_folder = "llama_3_poisoned_results/" + "checkpoint-" + str(args.checkpoint) +  "/" + test_file +"/"
+        save_path = "llama_3_poisoned_results/" + "checkpoint-" + str(args.checkpoint) +  "/" + test_file + "/" + exp_file
 
-        save_path = "qwen2_poisoned_results/" + "checkpoint-" + str(args.checkpoint) +  "/" + test_file + "/" + exp_file
+        os.makedirs(os.path.dirname(save_folder), exist_ok=True)
 
         print(data_path)
         print(model_str)
@@ -67,21 +69,27 @@ for test_file in os.listdir(test_path):
         model.to(device)
         model.eval()
 
+        batch_size = 4
         generated_texts = []
         malicious_labels = []
 
-        for i in tqdm(range(0, len(dataset)), desc="Processing items", unit="item"):
-            example = dataset.select([i])
-            inputs = tokeniser(example["text"], return_tensors="pt")
-            input_ids = inputs.input_ids.to(device)
-            input_length = input_ids.shape[1]
+        for start_idx in tqdm(range(0, len(dataset), batch_size), desc="Processing items", unit="batch"):
+            end_idx = min(start_idx + batch_size, len(dataset))
+            batch_examples = dataset.select(range(start_idx, end_idx))
 
-            outputs = model.generate(input_ids, max_new_tokens=100, num_return_sequences=1)
-            outputs = [output[input_length:] for output in outputs]
-            generated_text = [tokeniser.decode(output, skip_special_tokens=True) for output in outputs]
+            # Tokenize the batch
+            inputs = tokeniser(batch_examples["text"], return_tensors="pt", padding=True, truncation=True).to(device)
+            input_lengths = [sum(ids) for ids in inputs["attention_mask"]]
 
-            generated_texts.append(generated_text)
-            malicious_labels.append(example["malicious_label"])
+            # Generate outputs for the batch
+            outputs = model.generate(**inputs, max_new_tokens=75, num_return_sequences=1)
+            
+            # Process outputs
+            for i in range(len(outputs)):
+                output = outputs[i][input_lengths[i]:]
+                generated_text = tokeniser.decode(output, skip_special_tokens=True)
+                generated_texts.append(generated_text)
+                malicious_labels.append(batch_examples["malicious_label"][i])
 
         df = pd.DataFrame({
             'generated_texts': generated_texts,
